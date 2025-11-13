@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabaseClient";
 import './dev.css'
+import { useNavigate } from "react-router-dom";
 
 function DeveloperDashboard() {
   const [contentList, setContentList] = useState([]);
   useEffect(() => {
     fetchContent();
   }, []);
+
+    const navigate = useNavigate();
 
   const fetchContent = async () => {
     const { data, error } = await supabase
@@ -29,6 +32,7 @@ function DeveloperDashboard() {
 
  return (
   <div className="dashboard-container">
+    <button onClick={() => navigate("/") }>Go to Login</button>
     <h2>Developer Dashboard</h2>
     {contentList.map((item) => (
       <div key={item.id} className="content-card">

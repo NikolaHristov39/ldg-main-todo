@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
 import './writer.css'
+import { useNavigate } from "react-router-dom";
 
 function WriterDashboard() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ function WriterDashboard() {
     link: "",
     isCompleted: false,
   });
+
+    const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,6 +50,7 @@ function WriterDashboard() {
 
   return (
     <div style={{ padding: "20px" }}>
+      <button onClick={() => navigate("/")}>Go to Login</button>
       <h2>Writer Dashboard</h2>
       <input
         name="tittle"
